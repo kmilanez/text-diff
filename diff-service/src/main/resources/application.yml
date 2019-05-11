@@ -20,6 +20,15 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
 
+# Increase service communication timeout timeout
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 600000
+            
 # Set default request logging
 logging:
   level:
