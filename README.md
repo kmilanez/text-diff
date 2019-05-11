@@ -38,7 +38,7 @@ To start and stop using Docker
 ```
 
 ```shell
-> ./text-diff.sh start stop
+> ./text-diff.sh stop docker
 ```
 
 In case you don't want to use the script, each project can be execute using gradle wrapper:
@@ -49,6 +49,6 @@ In case you don't want to use the script, each project can be execute using grad
 
 Just make sure you start the whole app before running a transaction
 
-Each projec also provide a Dockerfile that you can build and execute using Docker Engine
+Each project also provide a Dockerfile that you can build and execute using Docker Engine
 
 Suit yourself!
