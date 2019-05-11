@@ -6,7 +6,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
- * Bootstraps REST API enabling registration in Eureka and service communication
+ * Starts REST API enabling registration in Eureka and service communication
  * using OpenFeign clients
  */
 @SpringBootApplication

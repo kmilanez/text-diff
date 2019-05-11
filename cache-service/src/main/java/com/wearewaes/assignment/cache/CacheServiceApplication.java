@@ -6,7 +6,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * Bootstraps REST API enabling registration in Eureka and caching
+ * Starts REST API enabling registration in Eureka and caching
  * with Hazelcast (but it can be extended to any other cache provider)
  */
 @SpringBootApplication
