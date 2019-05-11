@@ -28,7 +28,7 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 600000
-            
+
 # Set default request logging
 logging:
   level:
