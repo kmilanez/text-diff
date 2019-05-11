@@ -5,6 +5,16 @@ Tool to decode base64 text (regular text, xml, json, et cetera)
 # About architecture
 The app was built using a distributed approach in a microservice architecture. Each service is responsible for a single capabilite and interfaces with each other whe needed. I choose this approach to demonstrate my knowledge on the subject.
 
+It's composed of the following services:
+
+| Service  | Description |
+| ------------- | ------------- |
+| diff-service  |  Compare values and return their differences in pairs (offset,length) |
+| decode-service | Value decoding (currently, only base64 implemented)  |
+| cache-service  | In-memory cache, that can be enabled in standlone or distributed way  |
+| gateway  |  Entry point to expose services to frontend systems and users |
+| registry  | Service registry and discovery pattern  |
+
 # About technologies used
 The stack used is for the services is Spring with Spring Boot. Infrastructure is based on Spring Cloud, that integrates Netflix OSS stack to Spring ecosystem.
 
