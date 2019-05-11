@@ -1,0 +1,26 @@
+# Disable spring banner and application name
+spring:
+  application:
+    name: "registry"
+
+# Application port and compression properties
+server:
+  port: 8761
+  compression:
+    enabled: true
+
+# Service registry integration properties
+eureka:
+  instance:
+    hostname: localhost
+    instanceId: ${spring.application.name}:${eureka.instance.hostname}:${random.value}
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    fetch-registry: true
+    register-with-eureka: false
+
+# Set default request logging
+logging:
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG

@@ -1,0 +1,37 @@
+# Disable spring banner and application name
+spring:
+  application:
+    name: "gateway"
+
+# Application port and compression properties
+server:
+  port: 8080
+  compression:
+    enabled: true
+
+# Service registry integration properties
+eureka:
+  instance:
+    hostname: localhost
+    instanceId: ${spring.application.name}:${eureka.instance.hostname}:${random.value}
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+
+# Enable client-side proxy and load balancing using Zuul with Ribbon
+zuul:
+  # Ignore any service that is not included in the route
+  ignoredServices: '*'
+  # Ignore any service that is not included in the route
+  routes:
+    diff-service:
+      serviceId: diff-service
+      path: /**
+      sensitiveHeaders: ""
+
+# Set default request logging
+logging:
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG

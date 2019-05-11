@@ -1,0 +1,26 @@
+# Disable spring banner and application name
+spring:
+  application:
+    name: "decode-service"
+
+# Application port and compression properties
+server:
+  port: 0
+  compression:
+    enabled: true
+
+# Service registry integration properties
+eureka:
+  instance:
+    hostname: localhost
+    instanceId: ${spring.application.name}:${eureka.instance.hostname}:${random.value}
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+
+# Set default request logging
+logging:
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
