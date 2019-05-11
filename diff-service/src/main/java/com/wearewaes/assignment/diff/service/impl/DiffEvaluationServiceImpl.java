@@ -107,7 +107,6 @@ public class DiffEvaluationServiceImpl implements DiffEvaluationService {
         }
         // Compare both values
         List<Diff> valueDifferences = diffComparator.compare(valuePair);
-        updateValueDifferencesInCache(id, valueDifferences);
         return new DiffResponse(id, valuePair, valueDifferences);
     }
 
