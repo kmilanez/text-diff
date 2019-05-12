@@ -2,7 +2,7 @@ Text Diff
 ===================
 Tool to decode base64 text (regular text, xml, json, et cetera)
 
-# About architecture
+# About the architecture
 The app was built using a distributed approach in a microservice architecture. Each service is responsible for a single capabilite and interfaces with each other whe needed. I choose this approach to demonstrate my knowledge on the subject.
 
 It's composed of the following services:
@@ -15,7 +15,7 @@ It's composed of the following services:
 | gateway  |  Entry point to expose services to frontend systems and users |
 | registry  | Service registry and discovery pattern |
 
-App was design considering scalability in mind. Each service is stateless and can scale horizontaly. All the state is kept in cache, that works in replicated mode, which means that it can scale horizontaly as well.
+App was design considering scalability in mind. Each service is stateless and can scale horizontaly. All the state is in cache, that works in replicated mode, which means it can scale horizontaly as well.
 
 # About technologies used
 The stack used is for the services is Spring with Spring Boot. Infrastructure is based on Spring Cloud, that integrates Netflix OSS stack to Spring ecosystem.
@@ -26,7 +26,7 @@ For more information about them, please refer to documentation:
 
 [Spring Cloud Documentation](https://cloud.spring.io/spring-cloud-netflix/single/spring-cloud-netflix.html)
 
-For caching, I've choose Hazelcast. There is not special reason for that, I just wanted to test it in a microservice architecture. For more information about Hazelcast, refer to documentation:
+For caching, I choose Hazelcast. There is no special reason for that, I just wanted to test it in a microservice architecture. For more information about Hazelcast, refer to documentation:
 
 [Hazelcast Documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-hazelcast.html)
 
@@ -69,5 +69,3 @@ In case you don't want to use the script, each project can be execute using grad
 Just make sure you start the whole app before running a transaction
 
 Each project also provide a Dockerfile that you can build and execute using Docker Engine
-
-Suit yourself!
