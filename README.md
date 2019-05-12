@@ -23,7 +23,8 @@ The stack used is for the services is Spring with Spring Boot. Infrastructure is
 For more information about them, please refer to documentation:
 
 [Spring Boot Documentation](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)
-[Spring Cliud Documentation](https://cloud.spring.io/spring-cloud-netflix/single/spring-cloud-netflix.html)
+
+[Spring Cloud Documentation](https://cloud.spring.io/spring-cloud-netflix/single/spring-cloud-netflix.html)
 
 For caching, I've choose Hazelcast. I don't flavor it over any other in-memory cache provider, I just wanted to test it in a microservice architecture. For more information about Hazelcast, refer to documentation:
 
