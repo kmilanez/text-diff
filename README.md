@@ -69,3 +69,36 @@ In case you don't want to use the script, each project can be execute using grad
 Just make sure you start the whole app before running a transaction
 
 Each project also provide a Dockerfile that you can build and execute using Docker Engine
+
+# Example of transaction
+
+Save same value on left an right and assert it's a ARE_EQUAL response
+
+```shell
+> curl -d eyJtZXNzYWdlIjoiSGVsbG8gV29ybGQhIn0=  -H "Content-Type: application/json" -X POST http://localhost:8080/v1/diff/1/left
+{"id":"1","value":"{\"message\":\"Hello World!\"}","status":"SAVED"}%
+```
+
+```shell
+> curl -d eyJtZXNzYWdlIjoiSGVsbG8gV29ybGQhIn0=  -H "Content-Type: application/json" -X POST http://localhost:8080/v1/diff/1/right
+{"id":"1","value":"{\"message\":\"Hello World!\"}","status":"SAVED"}%
+```
+
+```shell
+> curl -H "Content-Type: application/json" -X GET http://localhost:8080/v1/diff/1
+{"id":"1","valuePair":{"leftValue":"{\"message\":\"Hello World!\"}","rightValue":"{\"message\":\"Hello World!\"}"},"status":"ARE_EQUAL"}%
+```
+
+Now change value on the right:
+
+```shell
+> curl -d eyJtZXNzYWdlIjoiSGVsbE8gd29ybGQhIn0  -H "Content-Type: application/json" -X POST http://localhost:8080/v1/diff/1/right
+{"id":"1","value":"{\"message\":\"HellO world!\"}","status":"SAVED"}%
+```
+
+And evaluate that response is HAVE_DIFFERENCES type:
+
+```shell
+> curl -H "Content-Type: application/json" -X GET http://localhost:8080/v1/diff/1
+{"id":"1","diffs":[{"offset":16,"length":1},{"offset":18,"length":1}],"status":"HAVE_DIFFERENCES"}%
+```
