@@ -26,7 +26,7 @@ For more information about them, please refer to documentation:
 
 [Spring Cloud Documentation](https://cloud.spring.io/spring-cloud-netflix/single/spring-cloud-netflix.html)
 
-For caching, I've choose Hazelcast. There is no special reason for that, I just wanted to test it in a microservice architecture. For more information about Hazelcast, refer to documentation:
+For caching, I choose Hazelcast. There is no special reason for that, I just wanted to test it in a microservice architecture. For more information about Hazelcast, refer to documentation:
 
 [Hazelcast Documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-hazelcast.html)
 
@@ -69,5 +69,3 @@ In case you don't want to use the script, each project can be execute using grad
 Just make sure you start the whole app before running a transaction
 
 Each project also provide a Dockerfile that you can build and execute using Docker Engine
-
-Suit yourself!
