@@ -26,7 +26,7 @@ For more information about them, please refer to documentation:
 
 [Spring Cloud Documentation](https://cloud.spring.io/spring-cloud-netflix/single/spring-cloud-netflix.html)
 
-For caching, I've choose Hazelcast. I don't flavor it over any other in-memory cache provider, I just wanted to test it in a microservice architecture. For more information about Hazelcast, refer to documentation:
+For caching, I've choose Hazelcast. There is not special reason for that, I just wanted to test it in a microservice architecture. For more information about Hazelcast, refer to documentation:
 
 [Hazelcast Documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-hazelcast.html)
 
