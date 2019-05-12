@@ -15,7 +15,7 @@ It's composed of the following services:
 | gateway  |  Entry point to expose services to frontend systems and users |
 | registry  | Service registry and discovery pattern |
 
-App was design considering scalability in mind. Each service is stateless and can scale horizontaly. All the state is kept in cache, that works in replicated mode, which means that it can scale horizontaly as well.
+App was design considering scalability in mind. Each service is stateless and can scale horizontaly. All the state is in cache, that works in replicated mode, which means it can scale horizontaly as well.
 
 # About technologies used
 The stack used is for the services is Spring with Spring Boot. Infrastructure is based on Spring Cloud, that integrates Netflix OSS stack to Spring ecosystem.
