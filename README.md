@@ -2,7 +2,7 @@ Text Diff
 ===================
 Tool to decode base64 text (regular text, xml, json, et cetera)
 
-# About architecture
+# About the architecture
 The app was built using a distributed approach in a microservice architecture. Each service is responsible for a single capabilite and interfaces with each other whe needed. I choose this approach to demonstrate my knowledge on the subject.
 
 It's composed of the following services:
