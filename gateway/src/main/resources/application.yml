@@ -31,14 +31,12 @@ zuul:
       path: /**
       sensitiveHeaders: ""
 
-# Increase service communication timeout timeout
+# Disable timeout in for test/development purposes
 hystrix:
   command:
     default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 600000
+      timeout:
+        enabled: false
 
 # Set default request logging
 logging:
