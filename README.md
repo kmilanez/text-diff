@@ -18,13 +18,13 @@ App is composed of the following services:
 App was designed with scalability in mind. Each service is stateless and can scale horizontaly. All the state is in cache, that works in replicated mode, which means it can scale horizontaly as well.
 
 # About technologies used
-The stack used is for the services is Spring with Spring Boot. Infrastructure is based on Spring Cloud, that integrates Netflix OSS stack to Spring ecosystem.
+The stack used is for the services is Spring with Spring Boot. Infrastructure is based on Spring Cloud Netflix, that integrates Netflix OSS stack to Spring ecosystem.
 
 For more information about them, please refer to documentation:
 
 [Spring Boot Documentation](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)
 
-[Spring Cloud Documentation](https://cloud.spring.io/spring-cloud-netflix/single/spring-cloud-netflix.html)
+[Spring Cloud Netflix Documentation](https://cloud.spring.io/spring-cloud-netflix/single/spring-cloud-netflix.html)
 
 For caching, I choose Hazelcast. There is no special reason for that, I just wanted to test it in a microservice architecture. For more information about Hazelcast, refer to documentation:
 
