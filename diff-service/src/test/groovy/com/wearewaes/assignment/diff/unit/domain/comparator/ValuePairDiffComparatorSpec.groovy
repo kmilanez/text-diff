@@ -27,7 +27,7 @@ class ValuePairDiffComparatorSpec extends Specification {
             assertThat(valueDiffs).isEqualTo(expectedDiffs)
     }
 
-    def "When values are JSON payloads, with same length, return [Diff(1,1)]"() {
+    def "When values are JSON payloads, with same length, return [Diff(10,1), Diff(14,1)"() {
         given:
             def values = new ValuePair("{\"value\":\"SpocK\"}",
                     "{\"value\":\"spock\"}")
