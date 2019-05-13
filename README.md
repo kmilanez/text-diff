@@ -68,7 +68,15 @@ In case you don't want to use the script, each project can be execute using grad
 
 Just make sure you start the whole app before running a transaction
 
-Each project also provide a Dockerfile that you can build and execute using Docker Engine
+Each project also provide a Dockerfile that you can build and execute using Docker Engine, but you will need to build the project to package the jar before building the image. 
+
+```shell
+> ./diff-service/gradlew build
+```
+
+It runs the compile, run the tests and package jar.
+
+The provided script have functions that automate these tasks. You can adapt them if necessary.
 
 # Example of transaction
 
