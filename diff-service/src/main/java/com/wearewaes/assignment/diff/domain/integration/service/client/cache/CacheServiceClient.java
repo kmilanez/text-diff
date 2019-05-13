@@ -3,6 +3,9 @@ package com.wearewaes.assignment.diff.domain.integration.service.client.cache;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * This class defines the contract for a client that interfaces with cache service
+ */
 @FeignClient("cache-service")
 public interface CacheServiceClient {
 
