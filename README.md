@@ -68,7 +68,7 @@ In case you don't want to use the script, each project can be executed using gra
 
 Just make sure you start the whole app before running a transaction
 
-Each project also provide a Dockerfile that you can build and execute using Docker Engine, with docker compose or manually running docker command. Just keep in mind that you will need to build the project to package the jar before building the image:
+Each project also provide a Dockerfile that you can build and execute using Docker Engine, with docker compose or manually running docker command. Just keep in mind that you will need to build the project to package the jar file before building the image:
 
 ```shell
 > ./diff-service/gradlew build
