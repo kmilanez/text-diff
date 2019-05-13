@@ -78,17 +78,23 @@ It runs the compile, run the tests and package jar.
 
 The provided script have functions that automate these tasks. You can adapt them if necessary.
 
-# Example of transaction
+# Running a transaction
+
+After starting the app, you can run an example transaction through the gateway. It's exposed on port 8080 and right now only provides the interface with diff service:
+
+http://localhost:8080/v1/diff
+
+Here's a sample transaction:
 
 Save same value on left an right and assert it's a ARE_EQUAL response
 
 ```shell
-> curl -d eyJtZXNzYWdlIjoiSGVsbG8gV29ybGQhIn0=  -H "Content-Type: application/json" -X POST http://localhost:8080/v1/diff/1/left
+> curl -d "eyJtZXNzYWdlIjoiSGVsbG8gV29ybGQhIn0="  -H "Content-Type: application/json" -X POST http://localhost:8080/v1/diff/1/left
 {"id":"1","value":"{\"message\":\"Hello World!\"}","status":"SAVED"}%
 ```
 
 ```shell
-> curl -d eyJtZXNzYWdlIjoiSGVsbG8gV29ybGQhIn0=  -H "Content-Type: application/json" -X POST http://localhost:8080/v1/diff/1/right
+> curl -d "eyJtZXNzYWdlIjoiSGVsbG8gV29ybGQhIn0="  -H "Content-Type: application/json" -X POST http://localhost:8080/v1/diff/1/right
 {"id":"1","value":"{\"message\":\"Hello World!\"}","status":"SAVED"}%
 ```
 
@@ -100,7 +106,7 @@ Save same value on left an right and assert it's a ARE_EQUAL response
 Now change value on the right:
 
 ```shell
-> curl -d eyJtZXNzYWdlIjoiSGVsbE8gd29ybGQhIn0  -H "Content-Type: application/json" -X POST http://localhost:8080/v1/diff/1/right
+> curl -d "eyJtZXNzYWdlIjoiSGVsbE8gd29ybGQhIn0"  -H "Content-Type: application/json" -X POST http://localhost:8080/v1/diff/1/right
 {"id":"1","value":"{\"message\":\"HellO world!\"}","status":"SAVED"}%
 ```
 
@@ -108,5 +114,10 @@ And evaluate that response is HAVE_DIFFERENCES type:
 
 ```shell
 > curl -H "Content-Type: application/json" -X GET http://localhost:8080/v1/diff/1
-{"id":"1","diffs":[{"offset":16,"length":1},{"offset":18,"length":1}],"status":"HAVE_DIFFERENCES"}%
+{"id":"1","valuePair":{"leftValue":"{\"message\":\"Hello World!\"}","rightValue":"{\"message\":\"HellO world!\"}"},"diffs":[{"offset":16,"length":1},{"offset":18,"length":1}],"status":"HAVE_DIFFERENCES"}%
 ```
+
+# Bad things can happen
+
+* You might receive a Hystrix read timeout from time to time. I have disabled timeout for the evaluation purposes, but if it still happens, just retry the transaction.
+* If you receive a internal server error or load balance error when starting the app, give a couple seconds for services to synch with Eureka and try again.
