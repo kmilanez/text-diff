@@ -1,6 +1,6 @@
 Text Diff
 ===================
-Tool that analyze differences between two base64 encoded payloads (json, xml, plain text, etc)
+Tool to analyze differences between two base64 encoded payloads (json, xml, plain text, etc) of the same size
 
 # About the architecture
 The app was built using a distributed approach in a microservice architecture. Each service is responsible for a single capabilite and interfaces with each other whe needed. I choose this approach to demonstrate my knowledge on the subject.
@@ -60,7 +60,7 @@ To start and stop using Docker
 > ./text-diff.sh stop docker
 ```
 
-In case you don't want to use the script, each project can be execute using gradle wrapper:
+In case you don't want to use the script, each project can be executed using gradle wrapper:
 
 ```shell
 > ./diff-service/gradlew bootRun
@@ -68,13 +68,13 @@ In case you don't want to use the script, each project can be execute using grad
 
 Just make sure you start the whole app before running a transaction
 
-Each project also provide a Dockerfile that you can build and execute using Docker Engine, but you will need to build the project to package the jar before building the image. 
+Each project also provide a Dockerfile that you can build and executed using Docker Engine, with docker compose or manually running docker command. Just keep in mind that you will need to build the project to package the jar before building the image:
 
 ```shell
 > ./diff-service/gradlew build
 ```
 
-It runs the compile, run the tests and package jar.
+It compiles, run the tests and package the jar file.
 
 The provided script have functions that automate these tasks. You can adapt them if necessary.
 
