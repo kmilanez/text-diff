@@ -17,6 +17,7 @@ function _build_services {
     done
 }
 
+# Build all Docker containers
 function _build_containers {
     for dir in $(find . -type d -maxdepth 1 | grep -v "^[.]$" -v | grep -v "gradle"); do
       CONTAINER_NAME=$(echo $dir | tr -d "[./]")
