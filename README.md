@@ -120,4 +120,4 @@ And evaluate that response is HAVE_DIFFERENCES type:
 # Bad things can happen
 
 * You might receive a Hystrix read timeout from time to time. I have disabled timeout for the evaluation purposes, but if it still happens, just retry the transaction.
-* If you receive a internal server error or load balance error when starting the app, give a couple seconds for services to synch with Eureka and try again.
+* If you receive a internal server error or load balance error after starting the app, give a couple seconds for services to synch with Eureka and try again.
