@@ -3,9 +3,9 @@ Text Diff
 Tool to analyze differences between two base64 encoded payloads (json, xml, plain text, etc) of the same size
 
 # About the architecture
-The app was built using a distributed approach in a microservice architecture. Each service is responsible for a single capabilite and interfaces with each other whe needed. I choose this approach to demonstrate my knowledge on the subject.
+The app was built using a distributed approach in a microservice architecture. Each service is responsible for a single capabilite and interfaces with each other when needed. I choose this approach to demonstrate my knowledge on the subject.
 
-It's composed of the following services:
+App is composed of the following services:
 
 | Service  | Description |
 | ------------- | ------------- |
