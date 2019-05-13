@@ -68,6 +68,7 @@ class HazelCastMemoryCacheImplSpec extends Specification {
             def entry = MockedUnitDiffCacheEntries.TEST_2
         when:
             when(map.put(entryId, entry)).thenReturn(entry)
+            when(map.get(entryId)).thenReturn(entry)
             def cachedEntry = cache.write(entryId, entry)
         then:
             assertThat(cachedEntry).isNotNull()
