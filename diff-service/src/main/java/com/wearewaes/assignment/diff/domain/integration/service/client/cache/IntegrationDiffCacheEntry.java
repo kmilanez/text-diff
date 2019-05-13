@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * This class abstract the values that can be cached
+ * It uses Lombok to remove unnecessary boilerplate code (get/setter, equal and hashcode, etc)
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

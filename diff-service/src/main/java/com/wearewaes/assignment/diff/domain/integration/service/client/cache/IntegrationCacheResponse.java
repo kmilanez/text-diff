@@ -5,6 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.util.ObjectUtils;
 
+/**
+ * This class abstract the response from cache service
+ * It uses Lombok to remove unnecessary boilerplate code (get/setter, equal and hashcode, etc)
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
