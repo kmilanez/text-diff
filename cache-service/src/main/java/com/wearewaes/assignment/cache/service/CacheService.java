@@ -4,8 +4,7 @@ import com.wearewaes.assignment.cache.domain.model.CacheResponse;
 import com.wearewaes.assignment.cache.domain.model.DiffCacheEntry;
 
 /**
- * Defines the contract for a service that get and saves
- * values from cache
+ * This class defines the contract for a client that interfaces with cache service
  */
 public interface CacheService {
     CacheResponse get(String id);
