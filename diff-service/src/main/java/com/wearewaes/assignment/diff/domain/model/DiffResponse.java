@@ -38,6 +38,7 @@ public class DiffResponse {
 
     public DiffResponse(String id, ValuePair valuePair, List<Diff> diffs) {
         this.id = id;
+        this.valuePair = valuePair;
         this.diffs = diffs;
         this.status = DiffResponseStatus.HAVE_DIFFERENCES;
     }
