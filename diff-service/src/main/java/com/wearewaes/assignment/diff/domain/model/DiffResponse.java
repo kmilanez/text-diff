@@ -16,11 +16,11 @@ public class DiffResponse {
 
     private String id;
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<Diff> diffs;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String value;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private ValuePair valuePair;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private List<Diff> diffs;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private DiffResponseStatus status;
 
