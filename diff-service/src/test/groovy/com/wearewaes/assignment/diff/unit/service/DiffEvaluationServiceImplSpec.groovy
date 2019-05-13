@@ -15,8 +15,9 @@ import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 import spock.lang.Specification
-import static org.mockito.Mockito.when
+
 import static org.assertj.core.api.Assertions.assertThat
+import static org.mockito.Mockito.when
 
 class DiffEvaluationServiceImplSpec extends Specification {
 

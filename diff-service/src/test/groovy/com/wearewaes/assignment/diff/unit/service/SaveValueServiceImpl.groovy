@@ -1,7 +1,6 @@
 package com.wearewaes.assignment.diff.unit.service
 
 import com.wearewaes.assignment.diff.domain.integration.service.client.cache.CacheServiceClient
-import com.wearewaes.assignment.diff.domain.integration.service.client.cache.IntegrationDiffCacheEntry
 import com.wearewaes.assignment.diff.domain.integration.service.client.decode.DecodeServiceClient
 import com.wearewaes.assignment.diff.domain.model.DiffResponseStatus
 import com.wearewaes.assignment.diff.service.impl.SaveValuesServiceImpl
@@ -11,8 +10,9 @@ import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 import spock.lang.Specification
-import static org.mockito.Mockito.when
+
 import static org.assertj.core.api.Assertions.assertThat
+import static org.mockito.Mockito.when
 
 class SaveValueServiceImpl extends Specification {
 

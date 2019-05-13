@@ -3,7 +3,6 @@ package com.wearewaes.assignment.diff.domain.integration.service.client.cache;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.util.ObjectUtils;
 
 /**
  * This class abstract the response from cache service

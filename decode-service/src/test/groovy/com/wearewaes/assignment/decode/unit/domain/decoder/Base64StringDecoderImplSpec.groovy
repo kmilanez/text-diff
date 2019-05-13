@@ -3,8 +3,8 @@ package com.wearewaes.assignment.decode.unit.domain.decoder
 import com.wearewaes.assignment.decode.domain.decoder.base64.impl.Base64StringDecoderImpl
 import com.wearewaes.assignment.decode.unit.mock.MockedUnitTestValues
 import spock.lang.Specification
-import static org.assertj.core.api.Assertions.assertThat
 
+import static org.assertj.core.api.Assertions.assertThat
 
 class Base64StringDecoderImplSpec extends Specification {
 

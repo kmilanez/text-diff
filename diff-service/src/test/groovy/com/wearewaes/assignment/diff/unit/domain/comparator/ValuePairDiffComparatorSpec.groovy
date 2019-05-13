@@ -4,6 +4,7 @@ import com.wearewaes.assignment.diff.domain.comparator.ValuePairDiffComparator
 import com.wearewaes.assignment.diff.domain.model.Diff
 import com.wearewaes.assignment.diff.domain.model.ValuePair
 import spock.lang.Specification
+
 import static org.assertj.core.api.Assertions.assertThat
 
 class ValuePairDiffComparatorSpec extends Specification {

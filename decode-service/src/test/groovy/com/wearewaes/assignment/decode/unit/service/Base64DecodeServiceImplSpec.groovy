@@ -1,16 +1,15 @@
 package com.wearewaes.assignment.decode.unit.service
 
 import com.wearewaes.assignment.decode.domain.decoder.base64.Base64Decoder
-import com.wearewaes.assignment.decode.unit.mock.MockedUnitTestValues
 import com.wearewaes.assignment.decode.service.impl.Base64DecodeServiceImpl
-
+import com.wearewaes.assignment.decode.unit.mock.MockedUnitTestValues
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 import spock.lang.Specification
-import static org.mockito.Mockito.when
 
 import static org.assertj.core.api.Assertions.assertThat
+import static org.mockito.Mockito.when
 
 class Base64DecodeServiceImplSpec extends Specification {
 
