@@ -80,7 +80,7 @@ The provided script have functions that automate these tasks. You can adapt them
 
 # Running a transaction
 
-Once the app starts, you can run a transaction through the gateway, that is exposed on port 8080. Right now only provides the interface with diff service:
+Once the app starts, you can run a transaction through the gateway, that is exposed on port 8080. Right now it only provides the interface with diff service:
 
 http://localhost:8080/v1/diff
 
