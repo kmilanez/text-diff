@@ -1,6 +1,6 @@
 Text Diff
 ===================
-Tool to decode base64 text (regular text, xml, json, et cetera)
+Tool that analyze differences between two base64 encoded payloads (json, xml, plain text, etc)
 
 # About the architecture
 The app was built using a distributed approach in a microservice architecture. Each service is responsible for a single capabilite and interfaces with each other whe needed. I choose this approach to demonstrate my knowledge on the subject.
