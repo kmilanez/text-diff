@@ -42,7 +42,7 @@ public class DiffEvaluationServiceImpl implements DiffEvaluationService {
      * @return response containing all the differences between left and right value
      */
     @Override
-    @HystrixCommand(fallbackMethod = "onCircuitOpen")
+    @HystrixCommand(fallbackMethod = "getDifferenceDefault")
     public DiffResponse getDifference(String id) {
         checkId(id);
         IntegrationDiffCacheEntry diffEntry = cacheService.getCacheEntryById(id).getCacheEntry();
@@ -107,6 +107,7 @@ public class DiffEvaluationServiceImpl implements DiffEvaluationService {
         }
         // Compare both values
         List<Diff> valueDifferences = diffComparator.compare(valuePair);
+        updateValuePairDifferencesInCache(id, valueDifferences);
         return new DiffResponse(id, valuePair, valueDifferences);
     }
 
@@ -115,7 +116,7 @@ public class DiffEvaluationServiceImpl implements DiffEvaluationService {
      * @param id diff entry in cache
      * @param valueDifferences list of differences between left a right values
      */
-    private void updateValueDifferencesInCache(String id, List<Diff> valueDifferences) {
+    private void updateValuePairDifferencesInCache(String id, List<Diff> valueDifferences) {
         IntegrationDiffCacheEntry diffEntry = cacheService.getCacheEntryById(id).getCacheEntry();
         diffEntry.setDiffs(valueDifferences);
         cacheService.saveCacheEntry(id, diffEntry);
@@ -126,7 +127,7 @@ public class DiffEvaluationServiceImpl implements DiffEvaluationService {
      * indicating that services are not available, or there's an error that can degrade
      * application health and cascade to a worse error
      */
-    public void onCircuitOpen() {
+    public DiffResponse getDifferenceDefault(String id) {
         throw new ServiceUnavailableException();
     }
 }

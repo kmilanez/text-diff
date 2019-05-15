@@ -37,7 +37,7 @@ public class SaveValuesServiceImpl implements SaveValuesService {
      * @return response with left value indicating it was saved
      */
     @Override
-    @HystrixCommand(fallbackMethod = "onCircuitOpen")
+    @HystrixCommand(fallbackMethod = "saveValueDefault")
     public DiffResponse saveLeftValue(String id, String leftValue) {
         checkIdAndValue(id, leftValue);
         String decodedLeftValue = decodeService.decode(leftValue);
@@ -58,7 +58,7 @@ public class SaveValuesServiceImpl implements SaveValuesService {
      * @return response with right value indicating it was saved
      */
     @Override
-    @HystrixCommand(fallbackMethod = "apologize")
+    @HystrixCommand(fallbackMethod = "saveValueDefault")
     public DiffResponse saveRightValue(String id, String rightValue) {
         checkIdAndValue(id, rightValue);
         String decodedRightValue = decodeService.decode(rightValue);
@@ -111,11 +111,18 @@ public class SaveValuesServiceImpl implements SaveValuesService {
     private void updateEntry(IntegrationDiffCacheEntry diffEntry, boolean fromLeft, String value) {
         // If it's no new entry, just update value
         if (fromLeft) {
-            diffEntry.setLeftValue(value);
+            diffEntry = new IntegrationDiffCacheEntry(diffEntry.getId(), value, diffEntry.getRightValue());
         } else {
-            diffEntry.setRightValue(value);
+            diffEntry = new IntegrationDiffCacheEntry(diffEntry.getId(), diffEntry.getLeftValue(), value);
         }
+        // if there's any already calculated value differences in cache, clean it up
+        diffEntry = cleanUpDiffsOnUpdate(diffEntry);
         cacheService.saveCacheEntry(diffEntry.getId(), diffEntry);
+    }
+
+    private IntegrationDiffCacheEntry cleanUpDiffsOnUpdate(IntegrationDiffCacheEntry diffEntry) {
+        return new IntegrationDiffCacheEntry(diffEntry.getId(), diffEntry.getLeftValue(),
+                diffEntry.getRightValue());
     }
 
     /**
@@ -123,7 +130,7 @@ public class SaveValuesServiceImpl implements SaveValuesService {
      * methods, indicating that services might not be available, or there's an error that can degrade
      * application health and cascade to a worse error
      */
-    public void onCircuitOpen() {
+    public DiffResponse saveValueDefault(String id, String value) {
         throw new ServiceUnavailableException();
     }
 }
