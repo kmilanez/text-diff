@@ -110,19 +110,13 @@ public class SaveValuesServiceImpl implements SaveValuesService {
      */
     private void updateEntry(IntegrationDiffCacheEntry diffEntry, boolean fromLeft, String value) {
         // If it's no new entry, just update value
+        final IntegrationDiffCacheEntry updatedDiffEntry;
         if (fromLeft) {
-            diffEntry = new IntegrationDiffCacheEntry(diffEntry.getId(), value, diffEntry.getRightValue());
+            updatedDiffEntry = new IntegrationDiffCacheEntry(diffEntry.getId(), value, diffEntry.getRightValue());
         } else {
-            diffEntry = new IntegrationDiffCacheEntry(diffEntry.getId(), diffEntry.getLeftValue(), value);
+            updatedDiffEntry = new IntegrationDiffCacheEntry(diffEntry.getId(), diffEntry.getLeftValue(), value);
         }
-        // if there's any already calculated value differences in cache, clean it up
-        diffEntry = cleanUpDiffsOnUpdate(diffEntry);
-        cacheService.saveCacheEntry(diffEntry.getId(), diffEntry);
-    }
-
-    private IntegrationDiffCacheEntry cleanUpDiffsOnUpdate(IntegrationDiffCacheEntry diffEntry) {
-        return new IntegrationDiffCacheEntry(diffEntry.getId(), diffEntry.getLeftValue(),
-                diffEntry.getRightValue());
+        cacheService.saveCacheEntry(updatedDiffEntry.getId(), updatedDiffEntry);
     }
 
     /**
