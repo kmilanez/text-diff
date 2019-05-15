@@ -9,8 +9,8 @@ import com.wearewaes.assignment.diff.domain.model.Diff
 import com.wearewaes.assignment.diff.domain.model.DiffResponseStatus
 import com.wearewaes.assignment.diff.domain.model.ValuePair
 import com.wearewaes.assignment.diff.service.impl.DiffEvaluationServiceImpl
-import com.wearewaes.assignment.diff.unit.mock.MockedUnitIntegrationCacheResponse
-import com.wearewaes.assignment.diff.unit.mock.MockedUnitIntegrationDiffCacheEntry
+import com.wearewaes.assignment.diff.mock.MockedIntegrationCacheResponse
+import com.wearewaes.assignment.diff.mock.MockedIntegrationDiffCacheEntry
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
@@ -65,8 +65,8 @@ class DiffEvaluationServiceImplSpec extends Specification {
 
     def "Should throw MissingLeftOrRightValueException when right value is missing"() {
         given:
-            def diffValueId = MockedUnitIntegrationDiffCacheEntry.TEST_1.getId()
-            def response = MockedUnitIntegrationCacheResponse.TEST1_RESPONSE
+            def diffValueId = MockedIntegrationDiffCacheEntry.TEST_1.getId()
+            def response = MockedIntegrationCacheResponse.TEST1_RESPONSE
         when:
             when(cacheService.getCacheEntryById(diffValueId)).thenReturn(response)
             service.getDifference(diffValueId)
@@ -76,8 +76,8 @@ class DiffEvaluationServiceImplSpec extends Specification {
 
     def "Should throw MissingLeftOrRightValueException when left value is missing"() {
         given:
-            def diffValueId = MockedUnitIntegrationDiffCacheEntry.TEST_2.getId()
-            def response = MockedUnitIntegrationCacheResponse.TEST2_RESPONSE
+            def diffValueId = MockedIntegrationDiffCacheEntry.TEST_2.getId()
+            def response = MockedIntegrationCacheResponse.TEST2_RESPONSE
         when:
             when(cacheService.getCacheEntryById(diffValueId)).thenReturn(response)
             service.getDifference(diffValueId)
@@ -87,9 +87,9 @@ class DiffEvaluationServiceImplSpec extends Specification {
 
     def "Should return diffs from cache when they already have been compared"() {
         given:
-            def diffValueId = MockedUnitIntegrationDiffCacheEntry.TEST_3.getId()
-            def diffEntry = MockedUnitIntegrationDiffCacheEntry.TEST_3
-            def cacheServiceResponse = MockedUnitIntegrationCacheResponse.TEST3_RESPONSE
+            def diffValueId = MockedIntegrationDiffCacheEntry.TEST_3.getId()
+            def diffEntry = MockedIntegrationDiffCacheEntry.TEST_3
+            def cacheServiceResponse = MockedIntegrationCacheResponse.TEST3_RESPONSE
         when:
             when(cacheService.getCacheEntryById(diffValueId)).thenReturn(cacheServiceResponse)
             def response = service.getDifference(diffValueId)
@@ -100,8 +100,8 @@ class DiffEvaluationServiceImplSpec extends Specification {
 
     def "Should return EQUAL response when left and right are equal"() {
         given:
-            def diffValueId = MockedUnitIntegrationDiffCacheEntry.TEST_4.getId()
-            def cacheServiceResponse = MockedUnitIntegrationCacheResponse.TEST4_RESPONSE
+            def diffValueId = MockedIntegrationDiffCacheEntry.TEST_4.getId()
+            def cacheServiceResponse = MockedIntegrationCacheResponse.TEST4_RESPONSE
         when:
             when(cacheService.getCacheEntryById(diffValueId)).thenReturn(cacheServiceResponse)
             def response = service.getDifference(diffValueId)
@@ -112,8 +112,8 @@ class DiffEvaluationServiceImplSpec extends Specification {
 
     def "Should return HAVE_DIFFERENT_LENGTH response when left and right have different lengths"() {
         given:
-            def diffValueId = MockedUnitIntegrationDiffCacheEntry.TEST_5.getId()
-            def cacheServiceResponse = MockedUnitIntegrationCacheResponse.TEST5_RESPONSE
+            def diffValueId = MockedIntegrationDiffCacheEntry.TEST_5.getId()
+            def cacheServiceResponse = MockedIntegrationCacheResponse.TEST5_RESPONSE
         when:
             when(cacheService.getCacheEntryById(diffValueId)).thenReturn(cacheServiceResponse)
             def response = service.getDifference(diffValueId)
@@ -124,10 +124,10 @@ class DiffEvaluationServiceImplSpec extends Specification {
 
     def "Should return HAVE_DIFFERENCES response when left and right have differences"() {
         given:
-            def diffValueId = MockedUnitIntegrationDiffCacheEntry.TEST_6.getId()
-            def diffEntry = MockedUnitIntegrationDiffCacheEntry.TEST_6
+            def diffValueId = MockedIntegrationDiffCacheEntry.TEST_6.getId()
+            def diffEntry = MockedIntegrationDiffCacheEntry.TEST_6
             def valuePair = new ValuePair(diffEntry.getLeftValue(), diffEntry.getRightValue())
-            def cacheServiceResponse = MockedUnitIntegrationCacheResponse.TEST6_RESPONSE
+            def cacheServiceResponse = MockedIntegrationCacheResponse.TEST6_RESPONSE
         when:
             when(cacheService.getCacheEntryById(diffValueId)).thenReturn(cacheServiceResponse)
             when(diffComparator.compare(valuePair)).thenReturn(diffEntry.getDiffs())

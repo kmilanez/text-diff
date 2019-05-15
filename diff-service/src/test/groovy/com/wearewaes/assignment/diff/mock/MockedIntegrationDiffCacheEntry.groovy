@@ -1,9 +1,9 @@
-package com.wearewaes.assignment.diff.unit.mock
+package com.wearewaes.assignment.diff.mock
 
 import com.wearewaes.assignment.diff.domain.integration.service.client.cache.IntegrationDiffCacheEntry
 import com.wearewaes.assignment.diff.domain.model.Diff
 
-class MockedUnitIntegrationDiffCacheEntry {
+class MockedIntegrationDiffCacheEntry {
     public static final IntegrationDiffCacheEntry TEST_1 = new IntegrationDiffCacheEntry("12340",
             "{\"value\":\"Hello!\"}", "")
 
@@ -19,7 +19,7 @@ class MockedUnitIntegrationDiffCacheEntry {
     public static final IntegrationDiffCacheEntry TEST_5 = new IntegrationDiffCacheEntry("12344",
             "{\"value\":\"Good morning!\"}", "{\"value\":\"Guten tag!\"}")
 
-    public static final IntegrationDiffCacheEntry TEST_6 = new IntegrationDiffCacheEntry("12344",
+    public static final IntegrationDiffCacheEntry TEST_6 = new IntegrationDiffCacheEntry("12345",
             "{\"value\":\"Hello!\"}", "{\"value\":\"Hallo!\"}", [new Diff(11, 1)])
 
 

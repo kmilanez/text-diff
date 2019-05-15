@@ -4,8 +4,8 @@ import com.wearewaes.assignment.diff.domain.integration.service.client.cache.Cac
 import com.wearewaes.assignment.diff.domain.integration.service.client.decode.DecodeServiceClient
 import com.wearewaes.assignment.diff.domain.model.DiffResponseStatus
 import com.wearewaes.assignment.diff.service.impl.SaveValuesServiceImpl
-import com.wearewaes.assignment.diff.unit.mock.MockedUnitIntegrationCacheResponse
-import com.wearewaes.assignment.diff.unit.mock.MockedUnitIntegrationDiffCacheEntry
+import com.wearewaes.assignment.diff.mock.MockedIntegrationCacheResponse
+import com.wearewaes.assignment.diff.mock.MockedIntegrationDiffCacheEntry
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
@@ -72,13 +72,13 @@ class SaveValueServiceImpl extends Specification {
 
     def "Should create a new diff entry and save left value it when value is not cached yet"() {
         given:
-            def id = MockedUnitIntegrationDiffCacheEntry.TEST_1.getId()
+            def id = MockedIntegrationDiffCacheEntry.TEST_1.getId()
             def encodedValue = "SGVsbG8="
             def decodedValue = "Hello"
-            def cacheEntry = MockedUnitIntegrationDiffCacheEntry.TEST_1
-            def cacheResponse = MockedUnitIntegrationCacheResponse.TEST1_RESPONSE
+            def cacheEntry = MockedIntegrationDiffCacheEntry.TEST_1
+            def cacheResponse = MockedIntegrationCacheResponse.TEST1_RESPONSE
         when:
-            when(cacheService.getCacheEntryById(id)).thenReturn(MockedUnitIntegrationCacheResponse.EMPTY_RESPONSE)
+            when(cacheService.getCacheEntryById(id)).thenReturn(MockedIntegrationCacheResponse.EMPTY_RESPONSE)
             when(decodeService.decode(encodedValue)).thenReturn(decodedValue)
             when(cacheService.saveCacheEntry(id, cacheEntry)).thenReturn(cacheResponse)
             def response = service.saveLeftValue(id, encodedValue)
@@ -90,13 +90,13 @@ class SaveValueServiceImpl extends Specification {
 
     def "Should create a new diff entry and save right value it when value is not cached yet"() {
         given:
-            def id = MockedUnitIntegrationDiffCacheEntry.TEST_2.getId()
+            def id = MockedIntegrationDiffCacheEntry.TEST_2.getId()
             def encodedValue = "SGFsbG8="
             def decodedValue = "Hallo"
-            def cacheEntry = MockedUnitIntegrationDiffCacheEntry.TEST_2
-            def cacheResponse = MockedUnitIntegrationCacheResponse.TEST2_RESPONSE
+            def cacheEntry = MockedIntegrationDiffCacheEntry.TEST_2
+            def cacheResponse = MockedIntegrationCacheResponse.TEST2_RESPONSE
         when:
-            when(cacheService.getCacheEntryById(id)).thenReturn(MockedUnitIntegrationCacheResponse.EMPTY_RESPONSE)
+            when(cacheService.getCacheEntryById(id)).thenReturn(MockedIntegrationCacheResponse.EMPTY_RESPONSE)
             when(decodeService.decode(encodedValue)).thenReturn(decodedValue)
             when(cacheService.saveCacheEntry(id, cacheEntry)).thenReturn(cacheResponse)
             def response = service.saveLeftValue(id, encodedValue)
@@ -108,12 +108,12 @@ class SaveValueServiceImpl extends Specification {
 
     def "Should update an existing diff entry and save left value it when value is already cached "() {
         given:
-            def id = MockedUnitIntegrationDiffCacheEntry.TEST_1.getId()
+            def id = MockedIntegrationDiffCacheEntry.TEST_1.getId()
             def encodedValue = "SGFsbG8="
             def decodedValue = "Hallo"
-            def cacheEntry = MockedUnitIntegrationDiffCacheEntry.TEST_1
-            def cacheResponse = MockedUnitIntegrationCacheResponse.TEST1_RESPONSE
-            def saveCacheResponse = MockedUnitIntegrationCacheResponse.TEST2_RESPONSE
+            def cacheEntry = MockedIntegrationDiffCacheEntry.TEST_1
+            def cacheResponse = MockedIntegrationCacheResponse.TEST1_RESPONSE
+            def saveCacheResponse = MockedIntegrationCacheResponse.TEST2_RESPONSE
         when:
             when(cacheService.getCacheEntryById(id)).thenReturn(cacheResponse)
             when(decodeService.decode(encodedValue)).thenReturn(decodedValue)
@@ -127,12 +127,12 @@ class SaveValueServiceImpl extends Specification {
 
     def "Should update an existing diff entry and save right value it when value is already cached"() {
         given:
-            def id = MockedUnitIntegrationDiffCacheEntry.TEST_3.getId()
+            def id = MockedIntegrationDiffCacheEntry.TEST_3.getId()
             def encodedValue = "SGVsbG8="
             def decodedValue = "Hello"
-            def cacheEntry = MockedUnitIntegrationDiffCacheEntry.TEST_3
-            def cacheResponse = MockedUnitIntegrationCacheResponse.TEST3_RESPONSE
-            def saveCacheResponse = MockedUnitIntegrationCacheResponse.TEST2_RESPONSE
+            def cacheEntry = MockedIntegrationDiffCacheEntry.TEST_3
+            def cacheResponse = MockedIntegrationCacheResponse.TEST3_RESPONSE
+            def saveCacheResponse = MockedIntegrationCacheResponse.TEST2_RESPONSE
         when:
             when(cacheService.getCacheEntryById(id)).thenReturn(cacheResponse)
             when(decodeService.decode(encodedValue)).thenReturn(decodedValue)
