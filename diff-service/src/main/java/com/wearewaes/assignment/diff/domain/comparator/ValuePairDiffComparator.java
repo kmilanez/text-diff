@@ -25,10 +25,10 @@ public class ValuePairDiffComparator implements DiffComparator<ValuePair, List<D
      */
     public List<Diff> compare(ValuePair valuePair) {
 
-        List<Diff> valuePairDiffs = new ArrayList<>();
+        final List<Diff> valuePairDiffs = new ArrayList<>();
 
-        String leftValue = valuePair.getLeftValue();
-        String rightValue = valuePair.getRightValue();
+        final String leftValue = valuePair.getLeftValue();
+        final String rightValue = valuePair.getRightValue();
 
         int length = LENGTH_CLEAN_STATE;
         int offset = OFFSET_CLEAN_STATE;

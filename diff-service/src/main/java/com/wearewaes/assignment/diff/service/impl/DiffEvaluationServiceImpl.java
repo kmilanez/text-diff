@@ -45,9 +45,9 @@ public class DiffEvaluationServiceImpl implements DiffEvaluationService {
     @HystrixCommand(fallbackMethod = "getDifferenceDefault")
     public DiffResponse getDifference(String id) {
         checkId(id);
-        IntegrationDiffCacheEntry diffEntry = cacheService.getCacheEntryById(id).getCacheEntry();
+        final IntegrationDiffCacheEntry diffEntry = cacheService.getCacheEntryById(id).getCacheEntry();
         checkDiffEntry(diffEntry);
-        ValuePair valuePair = new ValuePair(diffEntry.getLeftValue(), diffEntry.getRightValue());
+        final ValuePair valuePair = new ValuePair(diffEntry.getLeftValue(), diffEntry.getRightValue());
         // If Differences are already in cache, just return then
         if (!ObjectUtils.isEmpty(diffEntry.getDiffs())) {
             return new DiffResponse(id, valuePair, diffEntry.getDiffs());
@@ -106,7 +106,7 @@ public class DiffEvaluationServiceImpl implements DiffEvaluationService {
             return new DiffResponse(id, valuePair, DiffResponseStatus.HAVE_DIFFERENT_SIZE);
         }
         // Compare both values
-        List<Diff> valueDifferences = diffComparator.compare(valuePair);
+        final List<Diff> valueDifferences = diffComparator.compare(valuePair);
         updateValuePairDifferencesInCache(id, valueDifferences);
         return new DiffResponse(id, valuePair, valueDifferences);
     }
@@ -117,7 +117,7 @@ public class DiffEvaluationServiceImpl implements DiffEvaluationService {
      * @param valueDifferences list of differences between left a right values
      */
     private void updateValuePairDifferencesInCache(String id, List<Diff> valueDifferences) {
-        IntegrationDiffCacheEntry diffEntry = cacheService.getCacheEntryById(id).getCacheEntry();
+        final IntegrationDiffCacheEntry diffEntry = cacheService.getCacheEntryById(id).getCacheEntry();
         diffEntry.setDiffs(valueDifferences);
         cacheService.saveCacheEntry(id, diffEntry);
     }

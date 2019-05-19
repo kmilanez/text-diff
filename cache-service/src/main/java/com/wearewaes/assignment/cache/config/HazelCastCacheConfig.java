@@ -24,14 +24,14 @@ public class HazelCastCacheConfig {
     }
 
     private Config createConfig() {
-        Config config = new Config();
+        final Config config = new Config();
 
-        MapConfig mapConfig = new MapConfig();
+        final MapConfig mapConfig = new MapConfig();
         mapConfig.setName(CacheName.DEFAULT_CACHE_NAME);
         mapConfig.setTimeToLiveSeconds((int) TimeUnit.MINUTES.toSeconds(5));
         config.addMapConfig(mapConfig);
 
-        NetworkConfig network = config.getNetworkConfig();
+        final NetworkConfig network = config.getNetworkConfig();
         network.setPort(5701).setPortCount(20);
         network.setPortAutoIncrement(true);
         return config;

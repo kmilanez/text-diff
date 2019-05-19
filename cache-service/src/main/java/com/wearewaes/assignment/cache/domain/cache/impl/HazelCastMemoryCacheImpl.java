@@ -25,7 +25,7 @@ public class HazelCastMemoryCacheImpl implements MemoryCache {
      * @return cache entry
      */
     @Override
-    public DiffCacheEntry read(String key) {
+    public DiffCacheEntry read(final String key) {
         return cache.get(key);
     }
 
@@ -37,7 +37,7 @@ public class HazelCastMemoryCacheImpl implements MemoryCache {
      * @return cache entry
      */
     @Override
-    public DiffCacheEntry write(String key, DiffCacheEntry cacheEntry) {
+    public DiffCacheEntry write(final String key, final DiffCacheEntry cacheEntry) {
         cache.put(key, cacheEntry);
         return read(key);
     }

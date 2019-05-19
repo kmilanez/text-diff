@@ -19,13 +19,13 @@ public class CacheController {
     }
 
     @GetMapping("/{id}")
-    public CacheResponse get(@PathVariable("id") String id) {
+    public CacheResponse get(@PathVariable("id") final String id) {
         return service.get(id);
     }
 
     @PostMapping("/{id}")
-    public CacheResponse save(@PathVariable("id") String id,
-                             @RequestBody DiffCacheEntry entryToBeCached) {
+    public CacheResponse save(@PathVariable("id") final String id,
+                              @RequestBody final DiffCacheEntry entryToBeCached) {
         return service.save(id, entryToBeCached);
     }
 }

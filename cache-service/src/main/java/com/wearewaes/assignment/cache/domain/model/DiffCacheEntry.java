@@ -5,9 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hazelcast.nio.ObjectDataInput;
 import com.hazelcast.nio.ObjectDataOutput;
 import com.hazelcast.nio.serialization.DataSerializable;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -18,7 +16,9 @@ import java.util.List;
  * evaluation, the values and differences
  * It uses Lombok to remove unnecessary code (get/setter, equal and hashcode, etc)
  */
-@Data
+@Getter
+@EqualsAndHashCode
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class DiffCacheEntry implements DataSerializable {
@@ -58,9 +58,9 @@ public class DiffCacheEntry implements DataSerializable {
         String payload = in.readUTF();
         ObjectMapper payloadMapper = new ObjectMapper();
         DiffCacheEntry deserializeCacheEntry = payloadMapper.readValue(payload, DiffCacheEntry.class);
-        this.setId(deserializeCacheEntry.getId());
-        this.setLeftValue(deserializeCacheEntry.getLeftValue());
-        this.setRightValue(deserializeCacheEntry.getRightValue());
-        this.setDiffs(deserializeCacheEntry.getDiffs());
+        this.id = deserializeCacheEntry.getId();
+        this.leftValue = deserializeCacheEntry.getLeftValue();
+        this.rightValue = deserializeCacheEntry.getRightValue();
+        this.diffs = deserializeCacheEntry.getDiffs();
     }
 }

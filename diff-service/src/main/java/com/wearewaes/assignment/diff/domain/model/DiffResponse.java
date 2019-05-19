@@ -1,8 +1,10 @@
 package com.wearewaes.assignment.diff.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -10,7 +12,9 @@ import java.util.List;
  * This class abstracts the service response
  * It uses Lombok to remove unnecessary boilerplate code (get/setter, equal and hashcode, etc)
  */
-@Data
+@Getter
+@EqualsAndHashCode
+@ToString
 @NoArgsConstructor
 public class DiffResponse {
 

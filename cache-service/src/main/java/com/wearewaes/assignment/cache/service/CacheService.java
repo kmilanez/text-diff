@@ -8,6 +8,6 @@ import com.wearewaes.assignment.cache.domain.model.DiffCacheEntry;
  * values from cache
  */
 public interface CacheService {
-    CacheResponse get(String id);
-    CacheResponse save(String id, DiffCacheEntry cacheEntry);
+    CacheResponse get(final String id);
+    CacheResponse save(final String id, final DiffCacheEntry cacheEntry);
 }

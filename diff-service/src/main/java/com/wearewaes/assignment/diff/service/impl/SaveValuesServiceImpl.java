@@ -40,8 +40,8 @@ public class SaveValuesServiceImpl implements SaveValuesService {
     @HystrixCommand(fallbackMethod = "saveValueDefault")
     public DiffResponse saveLeftValue(String id, String leftValue) {
         checkIdAndValue(id, leftValue);
-        String decodedLeftValue = decodeService.decode(leftValue);
-        IntegrationDiffCacheEntry diffEntry = cacheService.getCacheEntryById(id).getCacheEntry();
+        final String decodedLeftValue = decodeService.decode(leftValue);
+        final IntegrationDiffCacheEntry diffEntry = cacheService.getCacheEntryById(id).getCacheEntry();
         if (ObjectUtils.isEmpty(diffEntry)) {
             createNewDiffEntry(id, true, decodedLeftValue);
         } else {
@@ -61,8 +61,8 @@ public class SaveValuesServiceImpl implements SaveValuesService {
     @HystrixCommand(fallbackMethod = "saveValueDefault")
     public DiffResponse saveRightValue(String id, String rightValue) {
         checkIdAndValue(id, rightValue);
-        String decodedRightValue = decodeService.decode(rightValue);
-        IntegrationDiffCacheEntry diffEntry = cacheService.getCacheEntryById(id).getCacheEntry();
+        final String decodedRightValue = decodeService.decode(rightValue);
+        final IntegrationDiffCacheEntry diffEntry = cacheService.getCacheEntryById(id).getCacheEntry();
         if (ObjectUtils.isEmpty(diffEntry)) {
             createNewDiffEntry(id, false, decodedRightValue);
         } else {
@@ -92,7 +92,7 @@ public class SaveValuesServiceImpl implements SaveValuesService {
      * @param value new value to be updated
      */
     private void createNewDiffEntry(String id, boolean fromLeft, String value) {
-        IntegrationDiffCacheEntry newDiffEntry;
+        final IntegrationDiffCacheEntry newDiffEntry;
         if (fromLeft) {
             newDiffEntry = new IntegrationDiffCacheEntry(id, value, null);
         } else {

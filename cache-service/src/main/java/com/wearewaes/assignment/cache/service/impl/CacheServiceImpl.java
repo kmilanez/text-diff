@@ -29,7 +29,7 @@ public class CacheServiceImpl implements CacheService {
      * @return cache entry
      */
     @Override
-    public CacheResponse get(String id) {
+    public CacheResponse get(final String id) {
         checkIfCacheIdIsEmpty(id);
         return new CacheResponse(cache.read(id), CacheResponseStatus.OK);
     }
@@ -40,7 +40,7 @@ public class CacheServiceImpl implements CacheService {
      * @return cache entry
      */
     @Override
-    public CacheResponse save(String id, DiffCacheEntry cacheEntry) {
+    public CacheResponse save(final String id, final DiffCacheEntry cacheEntry) {
         checkIfCacheIdIsEmpty(id);
         checkIfCacheEntryIsEmpty(cacheEntry);
         return new CacheResponse(cache.write(id, cacheEntry), CacheResponseStatus.SAVED);
